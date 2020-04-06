@@ -28,9 +28,10 @@ echo "###############################################"
 for IN in `find "$1" -maxdepth 1 -iname "*.ttf"`
 do
 echo $IN
-filename="${IN%.*}"
+file_name_we="$(basename -s .ttf $IN)"
+filename="${file_name_we%.*}"
+echo $filename
 webfont-generator/bin/generate-webfonts "$IN" -o "$2" --css "$filename.css"
-mv "$filename.css" ..
 done
 
 rm -rf webfont-generator
