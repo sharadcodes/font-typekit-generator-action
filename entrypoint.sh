@@ -30,7 +30,7 @@ do
 echo $IN
 filename="${IN%.*}"
 webfont-generator/bin/generate-webfonts "$IN" -o "$2" --css "$filename.css"
-mv "$filename.css" .
+mv "$filename.css" ..
 done
 
 rm -rf webfont-generator
