@@ -1,0 +1,21 @@
+name: 'Font Typekit Generator Action'
+description: 'An action for typekit generation along with CSS from TTF files'
+author: sharadcodes
+branding:
+  color: red
+  icon: package
+inputs:
+  input-folder:
+    description: 'Folder in which TTF files are stored'
+    required: true
+    default: 'ttf_fonts'
+  output-folder:
+    description: 'Folder in which EOT, WOFF, WOFF2 files are stored'
+    required: true
+    default: 'fonts'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.input-folder }}
+    - ${{ inputs.output-folder }}
