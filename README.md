@@ -33,3 +33,7 @@ This action will not upload the files to your repo, in order to do so you should
     git commit -m "Add changes" -a
     git push -f -q https://${{ secrets.GITHUB_TOKEN }}@github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME.git master
 ```        
+
+---
+
+> This action uses [Webfont generator](https://github.com/bdusell/webfont-generator.git) by bdusell which uses other tools like woff2 converter by Google and other converters.
