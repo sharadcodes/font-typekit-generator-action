@@ -24,3 +24,5 @@ echo "################ Conversion  ##################"
 echo "###############################################"
 python3 gen.py $1 $2
 ls -all $2
+rm -rf webfont-generator
+ls -all
