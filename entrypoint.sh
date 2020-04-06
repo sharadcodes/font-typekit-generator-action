@@ -2,28 +2,35 @@
 echo "###############################################"
 echo "################## mkdir  #####################"
 echo "###############################################"
-# Make directory for storage of converted font files
-mkdir "$2"
+
+mkdir -p "$2"
+
 echo "###############################################"
 echo "################ Setting up  ##################"
 echo "###############################################"
-# Setup
+
 git clone https://github.com/bdusell/webfont-generator.git
-wget https://raw.githubusercontent.com/sharadcodes/font-typekit-generator-action/master/gen.py
 cd webfont-generator
 ./setup # Fetch and build third-party libraries
+
 echo "###############################################"
-echo "##################### cd  #####################"
+echo "#################### CD..  ####################"
 echo "###############################################"
-# change dir
+
+# Get outside
 cd ..
+
 echo "###############################################"
-echo "################ Conversion  ##################"
+echo "################ Converting  ##################"
 echo "###############################################"
-python3 gen.py $1 $2
-echo "###############################################"
-echo "################ Cleaning repo ################"
-echo "###############################################"
-rm -rf ./webfont-generator
-rm -rf ./gen.py
-tree
+
+# Run for each file
+for IN in `find "$1" -maxdepth 1 -iname "*.ttf"`
+do
+echo $IN
+filename="${IN%.*}"
+webfont-generator/bin/generate-webfonts "$IN" -o "$2" --css "$filename.css"
+mv "$filename.css" .
+done
+
+rm -rf webfont-generator
