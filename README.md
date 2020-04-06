@@ -4,6 +4,7 @@ An action for typekit generation along with CSS from TTF files
 ## Instructions
 * Make sure that the filename is same as the name of font-family as the filename will be used to set the font-family name in the CSS.
 * Only ttf files will be converted.
+* CSS files will be uploaded in the root directory of repository by default.
 
 ## Usage
 To use this action add following to your workflow file
